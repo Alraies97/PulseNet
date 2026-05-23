@@ -63,7 +63,6 @@ class UserReadWithDetails(SQLModel):
     posts: List[PostSchema] = Field(default_factory=list)
 
 
-
 class PostLike(SQLModel, table=True):
     user_id: int = Field(foreign_key="user.id", primary_key=True)
     post_id: int = Field(foreign_key="post.id", primary_key=True)
