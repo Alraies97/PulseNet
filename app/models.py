@@ -49,7 +49,7 @@ class PostSchema(SQLModel):
 class Post(PostSchema, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     user_id: int = Field(foreign_key="user.id")
-
+    views: int = Field(default=0)
     user: User = Relationship(back_populates="posts")
 
 
