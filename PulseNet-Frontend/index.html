@@ -17,20 +17,30 @@
         <span class="navbar__logo" aria-hidden="true">◆</span>
         PulseNet
       </a>
-      <nav class="navbar__actions">
-        <button type="button" class="btn btn--ghost">Log in</button>
-        <button type="button" class="btn btn--primary">Sign up</button>
+      <nav class="navbar__actions" id="navbar-actions">
+        <!-- Guest -->
+        <div id="navbar-guest" class="navbar__guest">
+          <button type="button" id="btn-open-auth" class="btn btn--ghost">Log in</button>
+          <button type="button" id="btn-open-register" class="btn btn--primary">Sign up</button>
+        </div>
+        <!-- Authenticated -->
+        <div id="navbar-user" class="navbar__user" hidden>
+          <span class="navbar__welcome">
+            <span class="navbar__user-avatar" id="navbar-avatar" aria-hidden="true">?</span>
+            <span id="navbar-username">User</span>
+          </span>
+          <button type="button" id="btn-logout" class="btn btn--ghost btn--sm">Logout</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <main class="feed">
     <div class="feed__inner">
-      <!-- Create Post -->
       <section class="create-post" aria-labelledby="create-post-heading">
         <h2 id="create-post-heading" class="visually-hidden">Create a post</h2>
         <div class="create-post__card">
-          <div class="create-post__avatar" aria-hidden="true">Y</div>
+          <div class="create-post__avatar" id="create-post-avatar" aria-hidden="true">?</div>
           <div class="create-post__body">
             <label for="post-input" class="visually-hidden">What's on your mind?</label>
             <textarea
@@ -40,7 +50,7 @@
               placeholder="What's on your mind?"
             ></textarea>
             <div class="create-post__footer">
-              <button type="button" class="btn btn--publish">
+              <button type="button" id="btn-publish" class="btn btn--publish">
                 <span class="btn__icon" aria-hidden="true">↑</span>
                 Publish
               </button>
@@ -49,13 +59,72 @@
         </div>
       </section>
 
-      <!-- Posts Feed (populated by app.js) -->
       <section class="posts-feed" aria-labelledby="feed-heading">
         <h2 id="feed-heading" class="posts-feed__title">Your feed</h2>
         <div id="posts-list" class="posts-feed__list"></div>
       </section>
     </div>
   </main>
+
+  <!-- Auth modal -->
+  <div id="auth-modal" class="modal" hidden aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+      <button type="button" class="modal__close" data-close-modal aria-label="Close">&times;</button>
+
+      <div class="modal__tabs">
+        <button type="button" class="modal__tab modal__tab--active" data-auth-tab="login">Log in</button>
+        <button type="button" class="modal__tab" data-auth-tab="register">Register</button>
+      </div>
+
+      <h2 id="auth-modal-title" class="modal__title">Welcome to PulseNet</h2>
+      <p class="modal__subtitle">Sign in to publish posts and like content</p>
+
+      <p id="auth-error" class="auth-form__error" role="alert" hidden></p>
+
+      <!-- Login -->
+      <form id="login-form" class="auth-form" data-auth-panel="login" novalidate>
+        <div class="auth-form__field">
+          <label for="login-username">Username (first name)</label>
+          <input type="text" id="login-username" name="username" required autocomplete="username" placeholder="Your first name" />
+        </div>
+        <div class="auth-form__field">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required autocomplete="current-password" placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">Log in</button>
+      </form>
+
+      <!-- Register -->
+      <form id="register-form" class="auth-form" data-auth-panel="register" hidden novalidate>
+        <div class="auth-form__row">
+          <div class="auth-form__field">
+            <label for="reg-first-name">First name</label>
+            <input type="text" id="reg-first-name" name="first_name" required placeholder="Alex" />
+          </div>
+          <div class="auth-form__field">
+            <label for="reg-last-name">Last name</label>
+            <input type="text" id="reg-last-name" name="last_name" required placeholder="Rivera" />
+          </div>
+        </div>
+        <div class="auth-form__field">
+          <label for="reg-gender">Gender</label>
+          <select id="reg-gender" name="gender" required>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+          </select>
+        </div>
+        <div class="auth-form__field">
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" name="password" required minlength="4" placeholder="Min. 4 characters" />
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">Create account</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
   <script src="app.js"></script>
 </body>
 </html>
