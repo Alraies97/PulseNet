@@ -4,6 +4,7 @@ from sqlmodel import SQLModel
 from app.database import engine
 from app.routers import users, posts, roles, likes
 from scalar_fastapi import get_scalar_api_reference,Theme
+from fastapi.middleware.cors import CORSMiddleware 
 
 
 
@@ -13,6 +14,14 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(lifespan=lifespan,docs_url=None)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credntials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 app.include_router(users.router)
 app.include_router(posts.router)
