@@ -18,7 +18,8 @@
 | **Password Hashing** | bcrypt / Passlib |
 | **API Docs UI** | [Scalar](https://github.com/scalar/scalar) via `scalar-fastapi` |
 | **ASGI Server** | [Uvicorn](https://www.uvicorn.org/) |
-| **Deployment** | [Railway](https://railway.app/) |
+| **Backend Deployment** | [Railway](https://railway.app/) |
+| **Frontend** | Vanilla HTML/CSS/JS on [Vercel](https://vercel.com/) |
 
 ---
 
@@ -33,6 +34,7 @@
 - **Environment Variable Insulation** — Secrets and database URLs loaded from `.env`, never hardcoded in source
 - **CORS Enabled** — Cross-origin requests supported for frontend integration
 - **Interactive API Documentation** — Beautiful Scalar docs served at `/docs`
+- **Live Web App** — Full-featured frontend at [pulse-net-snowy.vercel.app](https://pulse-net-snowy.vercel.app/)
 
 ---
 
@@ -64,6 +66,11 @@ PulseNet/
         ├── posts.py                 # Post creation & listing
         ├── roles.py                 # Role management
         └── likes.py                 # Post like/unlike toggle
+│
+└── PulseNet-Frontend/               # Vanilla JS frontend (deployed on Vercel)
+    ├── index.html
+    ├── style.css
+    └── app.js
 ```
 
 ### Application Layers
@@ -205,7 +212,17 @@ The API will be available at:
 
 ---
 
-## API Documentation
+## Live Application & API Documentation
+
+### Frontend (Vercel)
+
+| Environment | URL |
+|-------------|-----|
+| **Production** | [https://pulse-net-snowy.vercel.app/](https://pulse-net-snowy.vercel.app/) |
+
+The live app includes the social feed, login/register, post publishing, and like interactions — connected to the Railway API backend.
+
+### API Docs (Scalar)
 
 Interactive API documentation is powered by **Scalar** and replaces the default Swagger UI.
 
@@ -215,6 +232,16 @@ Interactive API documentation is powered by **Scalar** and replaces the default 
 | **Production (Railway)** | [https://project0-backend-production.up.railway.app/docs](https://project0-backend-production.up.railway.app/docs) |
 
 Use the docs to explore endpoints, inspect request/response schemas, and test authenticated routes with a Bearer token obtained from the login endpoint.
+
+---
+
+## 🛠️ Development Methodology
+
+This project reflects a deliberate split between hand-crafted backend engineering and an AI-accelerated frontend workflow, both under unified architectural direction.
+
+- **Backend** — Built 100% from scratch by me, handling the core architecture, database models (Neon PostgreSQL), secure authentication (JWT), and automated cloud deployment (Railway).
+
+- **Frontend** — Designed and developed using an AI-assisted workflow ([Cursor AI](https://cursor.com/)) under my strict architectural guidance, manual API integration, and debugging.
 
 ---
 
@@ -291,6 +318,7 @@ uvicorn main:app --host 0.0.0.0 --port $PORT
 
 **Live production URLs:**
 
+- **Frontend:** [https://pulse-net-snowy.vercel.app/](https://pulse-net-snowy.vercel.app/)
 - **API:** [https://project0-backend-production.up.railway.app](https://project0-backend-production.up.railway.app)
 - **Docs:** [https://project0-backend-production.up.railway.app/docs](https://project0-backend-production.up.railway.app/docs)
 
