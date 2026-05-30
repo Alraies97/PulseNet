@@ -307,10 +307,32 @@ textarea {
   margin-bottom: 0.25rem;
 }
 
-.posts-feed {
+.posts-feed__list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.posts-feed__status {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.posts-feed__status--error {
+  color: #f87171;
+}
+
+.posts-feed__status--empty {
+  color: var(--text-secondary);
+}
+
+.post-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
 }
 
 /* Post Card
