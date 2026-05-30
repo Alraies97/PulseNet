@@ -18,7 +18,7 @@ app = FastAPI(lifespan=lifespan,docs_url=None)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credntials=True,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )

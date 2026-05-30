@@ -14,7 +14,17 @@ router = APIRouter(
 @router.get("", response_model=List[UserReadWithDetails])
 async def fetch_users(session: Session = Depends(get_session)):
     users = session.exec(select(User)).all()
-    return users
+    return [
+        UserReadWithDetails(
+            id=u.id,
+            first_name=u.first_name,
+            last_name=u.last_name,
+            gender=u.gender.value if hasattr(u.gender, "value") else str(u.gender),
+            roles=[],
+            posts=[],
+        )
+        for u in users
+    ]
 
 
 @router.post("",status_code=status.HTTP_201_CREATED, response_model=UserReadWithDetails)
@@ -62,7 +72,14 @@ async def fetch_by_id(user_id:int, session: Session=Depends(get_session)):
     user=session.get(User,user_id)
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with ID {user_id} not found")
-    return user
+    return UserReadWithDetails(
+        id=user.id,
+        first_name=user.first_name,
+        last_name=user.last_name,
+        gender=user.gender.value if hasattr(user.gender, "value") else str(user.gender),
+        roles=[],
+        posts=[],
+    )
 
 
 @router.put("/{user_id}", response_model=UserReadWithDetails)

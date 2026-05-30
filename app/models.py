@@ -53,6 +53,14 @@ class Post(PostSchema, table=True):
     user: User = Relationship(back_populates="posts")
 
 
+class PostRead(PostSchema):
+    id: int
+    user_id: int
+    views: int = 0
+    likes_count: int = 0
+    author_name: str = ""
+
+
 class UserReadWithDetails(SQLModel):
     id: int
     first_name: str

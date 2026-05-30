@@ -1,9 +1,9 @@
 from sqlmodel import create_engine, Session
+from app.config import settings
 
-sqlite_file_name = "database.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
+# Use Neon PostgreSQL in production; falls back via DATABASE_URL in .env
+engine = create_engine(settings.DATABASE_URL, echo=False)
 
-engine = create_engine(sqlite_url, echo=True)
 
 def get_session():
     with Session(engine) as session:
