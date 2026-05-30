@@ -1,6 +1,6 @@
-# Project0 Backend API
+# PulseNet Backend API
 
-A **production-ready RESTful API** built with **FastAPI**, designed for scalable user management, content publishing, role-based access, and social interactions. The backend follows modern Python backend practices with typed schemas, JWT authentication, versioned migrations, and cloud-native database deployment.
+**PulseNet** is a **production-ready RESTful API** built with **FastAPI**, designed for scalable user management, content publishing, role-based access, and social interactions. The backend follows modern Python backend practices with typed schemas, JWT authentication, versioned migrations, and cloud-native database deployment.
 
 ---
 
@@ -39,7 +39,7 @@ A **production-ready RESTful API** built with **FastAPI**, designed for scalable
 ## Architecture & Project Structure
 
 ```
-PPython9.1/
+PulseNet/
 ├── main.py                          # FastAPI application entry point & CORS setup
 ├── requirements.txt                 # Python dependencies
 ├── alembic.ini                      # Alembic configuration (local SQLite URL)
@@ -138,8 +138,8 @@ In production, point Alembic and the application at the same Neon PostgreSQL con
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Alraies97/Project0-backend.git
-cd Project0-backend
+git clone https://github.com/Alraies97/Project0-backend.git PulseNet
+cd PulseNet
 ```
 
 ### 2. Create & Activate Virtual Environment
@@ -298,4 +298,4 @@ uvicorn main:app --host 0.0.0.0 --port $PORT
 
 ## License
 
-This project is part of the **Project0** backend initiative. All rights reserved.
+**PulseNet** — All rights reserved.
