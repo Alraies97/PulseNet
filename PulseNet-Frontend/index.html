@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PulseNet — Connect, share, and engage." />
+  <title>PulseNet</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__brand">
+        <span class="navbar__logo" aria-hidden="true">◆</span>
+        PulseNet
+      </a>
+      <nav class="navbar__actions">
+        <button type="button" class="btn btn--ghost">Log in</button>
+        <button type="button" class="btn btn--primary">Sign up</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="feed">
+    <div class="feed__inner">
+      <!-- Create Post -->
+      <section class="create-post" aria-labelledby="create-post-heading">
+        <h2 id="create-post-heading" class="visually-hidden">Create a post</h2>
+        <div class="create-post__card">
+          <div class="create-post__avatar" aria-hidden="true">Y</div>
+          <div class="create-post__body">
+            <label for="post-input" class="visually-hidden">What's on your mind?</label>
+            <textarea
+              id="post-input"
+              class="create-post__textarea"
+              rows="3"
+              placeholder="What's on your mind?"
+            ></textarea>
+            <div class="create-post__footer">
+              <button type="button" class="btn btn--publish">
+                <span class="btn__icon" aria-hidden="true">↑</span>
+                Publish
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Posts Feed -->
+      <section class="posts-feed" aria-labelledby="feed-heading">
+        <h2 id="feed-heading" class="posts-feed__title">Your feed</h2>
+
+        <article class="post-card">
+          <header class="post-card__header">
+            <div class="post-card__author-wrap">
+              <div class="post-card__avatar" aria-hidden="true">S</div>
+              <div>
+                <h3 class="post-card__author">Sarah Mitchell</h3>
+                <time class="post-card__time" datetime="2026-05-22T09:14:00">May 22, 2026 · 9:14 AM</time>
+              </div>
+            </div>
+          </header>
+          <p class="post-card__content">
+            Just shipped the first version of our API docs on Scalar — the purple theme actually looks incredible. Who else is building with FastAPI this week?
+          </p>
+          <footer class="post-card__footer">
+            <span class="post-card__views" title="Views">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              248 views
+            </span>
+            <button type="button" class="post-card__like" aria-label="Like post, 42 likes">
+              <svg class="icon icon--heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span class="post-card__like-count">42</span>
+            </button>
+          </footer>
+        </article>
+
+        <article class="post-card">
+          <header class="post-card__header">
+            <div class="post-card__author-wrap">
+              <div class="post-card__avatar post-card__avatar--alt" aria-hidden="true">A</div>
+              <div>
+                <h3 class="post-card__author">Alex Rivera</h3>
+                <time class="post-card__time" datetime="2026-05-21T18:32:00">May 21, 2026 · 6:32 PM</time>
+              </div>
+            </div>
+          </header>
+          <p class="post-card__content">
+            Migrated our backend from SQLite to Neon PostgreSQL today. Alembic migrations made the transition painless. PulseNet is officially cloud-ready.
+          </p>
+          <footer class="post-card__footer">
+            <span class="post-card__views" title="Views">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              1.2k views
+            </span>
+            <button type="button" class="post-card__like post-card__like--active" aria-label="Unlike post, 127 likes">
+              <svg class="icon icon--heart" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span class="post-card__like-count">127</span>
+            </button>
+          </footer>
+        </article>
+
+        <article class="post-card">
+          <header class="post-card__header">
+            <div class="post-card__author-wrap">
+              <div class="post-card__avatar post-card__avatar--teal" aria-hidden="true">J</div>
+              <div>
+                <h3 class="post-card__author">Jordan Lee</h3>
+                <time class="post-card__time" datetime="2026-05-20T11:05:00">May 20, 2026 · 11:05 AM</time>
+              </div>
+            </div>
+          </header>
+          <p class="post-card__content">
+            Hot take: vanilla JS frontends are underrated for MVPs. No build step, no framework churn — just ship. Building the PulseNet UI this way and loving the speed.
+          </p>
+          <footer class="post-card__footer">
+            <span class="post-card__views" title="Views">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              89 views
+            </span>
+            <button type="button" class="post-card__like" aria-label="Like post, 18 likes">
+              <svg class="icon icon--heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span class="post-card__like-count">18</span>
+            </button>
+          </footer>
+        </article>
+
+        <article class="post-card">
+          <header class="post-card__header">
+            <div class="post-card__author-wrap">
+              <div class="post-card__avatar post-card__avatar--rose" aria-hidden="true">M</div>
+              <div>
+                <h3 class="post-card__author">Maya Chen</h3>
+                <time class="post-card__time" datetime="2026-05-19T08:47:00">May 19, 2026 · 8:47 AM</time>
+              </div>
+            </div>
+          </header>
+          <p class="post-card__content">
+            JWT auth + role-based access is finally wired up on the backend. Next up: connecting this feed to the live Railway deployment. Stay tuned.
+          </p>
+          <footer class="post-card__footer">
+            <span class="post-card__views" title="Views">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              512 views
+            </span>
+            <button type="button" class="post-card__like" aria-label="Like post, 64 likes">
+              <svg class="icon icon--heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span class="post-card__like-count">64</span>
+            </button>
+          </footer>
+        </article>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
