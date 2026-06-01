@@ -15,8 +15,8 @@ class UserRoleLink(SQLModel, table=True):
 
 
 class RoleSchema(SQLModel):
-     name: str = Field(..., min_length=1)
-     desecription: Optional[str] = None
+    name: str = Field(..., min_length=1)
+    desecription: Optional[str] = None
     
 class Role(RoleSchema, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
