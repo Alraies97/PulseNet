@@ -11,3 +11,6 @@ pyjwt
 sqlmodel
 scalar-fastapi
 passlib
+alembic
+jwt
+
