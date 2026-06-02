@@ -21,6 +21,17 @@ const navbarUsername = document.getElementById('navbar-username');
 const navbarAvatar = document.getElementById('navbar-avatar');
 const createPostAvatar = document.getElementById('create-post-avatar');
 const toastContainer = document.getElementById('toast-container');
+const BACKEND_URL = "https://pulsenet-production.up.railway.app"; 
+
+async function fetchPosts() {
+    try {
+        const response = await fetch(`${BACKEND_URL}/posts`);
+        const data = await response.json();
+        console.log("Data from Railway Backend:", data);
+    } catch (error) {
+        console.error("Connection failed:", error);
+    }
+}
 
 const ICONS = {
   eye: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

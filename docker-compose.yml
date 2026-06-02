@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+ 
+  web:
+    build: . 
+    container_name: pulsenet-api
+    ports:
+      - "8000:8000" 
+    environment:
+      - DATABASE_URL=postgresql://postgres:secret@db:5432/pulsenet_db 
+    depends_on:
+      - db 
+  db:
+    image: postgres:15-alpine 
+    container_name: pulsenet-postgres-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=pulsenet_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data: 

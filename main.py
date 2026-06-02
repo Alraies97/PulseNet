@@ -15,9 +15,15 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan,docs_url=None)
 
+origins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://pulse-net-snowy.vercel.app"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
