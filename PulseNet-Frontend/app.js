@@ -21,7 +21,7 @@ const navbarUsername = document.getElementById('navbar-username');
 const navbarAvatar = document.getElementById('navbar-avatar');
 const createPostAvatar = document.getElementById('create-post-avatar');
 const toastContainer = document.getElementById('toast-container');
-const BACKEND_URL = "https://project0-backend-production.up.railway.app"; 
+const BACKEND_URL = "https://pulse-net-snowy.vercel.app/"; 
 
 async function fetchPosts() {
     try {
