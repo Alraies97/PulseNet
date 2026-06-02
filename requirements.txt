@@ -13,4 +13,5 @@ scalar-fastapi
 passlib
 alembic
 jwt
+python-multipart
 
