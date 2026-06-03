@@ -219,6 +219,18 @@ The API will be available at:
 - Docker installed on your system
 - Docker Compose installed
 
+### Docker Configuration
+
+The project includes the following Docker files:
+
+- **Dockerfile** — Multi-stage build configuration using Python 3.11-slim base image, installs dependencies from requirements.txt, and runs the FastAPI application with uvicorn
+- **docker-compose.yml** — Orchestrates the web application and PostgreSQL database services with volume persistence for database data
+
+The docker-compose setup includes:
+- **web service** — Builds and runs the FastAPI application on port 8000
+- **db service** — PostgreSQL 15-alpine database on port 5432 with persistent volume
+- Environment variables for database connection are pre-configured in docker-compose.yml
+
 ### Running with Docker
 
 To run the project using Docker, ensure that the `.env` file containing `DATABASE_URL` and `SECRET_KEY` is present in the root directory before running the Docker commands.
@@ -239,6 +251,12 @@ docker-compose up -d
 
 ```bash
 docker-compose down
+```
+
+**View logs:**
+
+```bash
+docker-compose logs -f
 ```
 
 ---
