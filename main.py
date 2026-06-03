@@ -5,7 +5,7 @@ from app.database import engine
 from app.routers import users, posts, roles, likes
 from scalar_fastapi import get_scalar_api_reference,Theme
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.trustedhost import TrustedHostsMiddleware 
+from fastapi.middleware.trustedhost import TrustedHostMiddleware 
 
 
 
@@ -34,7 +34,7 @@ app.add_middleware(
 
 # Trust proxy headers for Railway reverse proxy
 app.add_middleware(
-    TrustedHostsMiddleware,
+    TrustedHostMiddleware,
     allowed_hosts=["*"]  # Allow all hosts since Railway handles SSL termination
 )
 
