@@ -122,7 +122,7 @@ async def login(user_credentials: OAuth2PasswordRequestForm=Depends(), session: 
 
     if not verfiy_password(user_credentials.password, db_user.hashed_password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
-    
+
     token_data={"user_id": db_user.id}
     access_token = create_access_token(token_data)
-    return {"access_token": access_token, "token_type": "Bearer"}
+    return {"access_token": access_token, "token_type": "bearer"}

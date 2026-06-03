@@ -4,7 +4,8 @@ from sqlmodel import SQLModel
 from app.database import engine
 from app.routers import users, posts, roles, likes
 from scalar_fastapi import get_scalar_api_reference,Theme
-from fastapi.middleware.cors import CORSMiddleware 
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostsMiddleware 
 
 
 
@@ -29,6 +30,12 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+)
+
+# Trust proxy headers for Railway reverse proxy
+app.add_middleware(
+    TrustedHostsMiddleware,
+    allowed_hosts=["*"]  # Allow all hosts since Railway handles SSL termination
 )
 
 app.include_router(users.router)
