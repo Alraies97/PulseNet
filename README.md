@@ -46,6 +46,8 @@ PulseNet/
 ├── requirements.txt                 # Python dependencies
 ├── alembic.ini                      # Alembic configuration (local SQLite URL)
 ├── README.md
+├── Dockerfile                       # Docker image configuration for containerization
+├── docker-compose.yml               # Docker Compose orchestration for web and db services
 │
 ├── alembic/                         # Database migration environment
 │   ├── env.py                       # Alembic runtime config & metadata binding
