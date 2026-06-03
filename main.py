@@ -15,16 +15,20 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan,docs_url=None)
 
+# Define the explicit frontend production domain and local domains
+origins = [
+    "https://pulse-net-snowy.vercel.app",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://pulse-net-snowy.vercel.app",
-        "https://pulse-net-snowy.vercel.app/",
-    ],
-    allow_origin_regex="https://.*\\.vercel\\.app",
+    allow_origins=origins,
+    allow_origin_regex="https://.*\\.vercel\\.app", # Supports all Vercel previews dynamically
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
 
 app.include_router(users.router)
