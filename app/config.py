@@ -7,8 +7,8 @@ _root_dir = _env_dir.parent
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str
-    SECRET_KEY: str
+    DATABASE_URL: str = ""
+    SECRET_KEY: str = ""
 
     model_config = SettingsConfigDict(
         env_file=(_env_dir / ".env", _root_dir / ".env"),
