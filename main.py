@@ -16,7 +16,6 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan,docs_url=None)
 
-# Define the explicit frontend production domain and local domains
 origins = [
     "https://pulse-net-snowy.vercel.app",
     "http://localhost:8000",
@@ -26,16 +25,15 @@ origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_origin_regex="https://.*\\.vercel\\.app", # Supports all Vercel previews dynamically
+    allow_origin_regex="https://.*\\.vercel\\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Trust proxy headers for Railway reverse proxy
 app.add_middleware(
     TrustedHostMiddleware,
-    allowed_hosts=["*"]  # Allow all hosts since Railway handles SSL termination
+    allowed_hosts=["*"]  
 )
 
 app.include_router(users.router)
