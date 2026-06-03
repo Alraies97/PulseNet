@@ -212,6 +212,37 @@ The API will be available at:
 
 ---
 
+## Docker Setup
+
+### Prerequisites
+
+- Docker installed on your system
+- Docker Compose installed
+
+### Running with Docker
+
+To run the project using Docker, ensure that the `.env` file containing `DATABASE_URL` and `SECRET_KEY` is present in the root directory before running the Docker commands.
+
+**Build and start containers in development mode:**
+
+```bash
+docker-compose up --build
+```
+
+**Run containers in the background (detached mode):**
+
+```bash
+docker-compose up -d
+```
+
+**Stop containers:**
+
+```bash
+docker-compose down
+```
+
+---
+
 ## Live Application & API Documentation
 
 ### Frontend (Vercel)
