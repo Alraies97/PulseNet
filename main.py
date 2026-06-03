@@ -17,7 +17,7 @@ app = FastAPI(lifespan=lifespan,docs_url=None)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://pulse-net-snowy.vercel.app"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
